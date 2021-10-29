@@ -1,0 +1,65 @@
+.bg-gradient span,
+.bg-gradient:before {
+  background: linear-gradient(
+    135deg,
+    #045de9 0%,
+    rgb(9, 198, 249) 80%,
+    #09c6f9 100%
+  );
+}
+
+.bttn,
+.bttn:hover,
+.bttn:focus,
+.bttn:active {
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.fancy-button {
+  position: relative;
+}
+.fancy-button:before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 1rem;
+  position: absolute;
+  bottom: 0.35rem;
+  left: calc(50% - 1rem);
+  z-index: -1;
+  border-radius: 1rem;
+  filter: blur(0.5rem) brightness(1.35);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+}
+
+.fancy-button span {
+  display: inline-block;
+  padding: 0.237rem 0.237rem;
+  border-radius: 0.3rem;
+  position: relative;
+  z-index: 2;
+  will-change: transform, filter;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+}
+.fancy-button:focus,
+.fancy-button:active {
+  color: #ffffff;
+}
+.fancy-button:hover {
+  color: #ffffff;
+}
+.fancy-button:hover {
+  filter: brightness(1.05) contrast(1.05);
+  transform: scale(0.95);
+}
+.fancy-button:hover:before {
+  bottom: 0;
+  filter: blur(10px) brightness(0.95);
+}
