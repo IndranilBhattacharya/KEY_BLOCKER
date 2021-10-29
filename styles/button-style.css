@@ -29,11 +29,11 @@
   width: 2rem;
   height: 1rem;
   position: absolute;
-  bottom: 0.35rem;
+  bottom: 0.36rem;
   left: calc(50% - 1rem);
   z-index: -1;
   border-radius: 1rem;
-  filter: blur(0.5rem) brightness(1.35);
+  filter: blur(0.45rem) brightness(1.35);
   transform-style: preserve-3d;
   transition: all 0.3s ease-out;
 }

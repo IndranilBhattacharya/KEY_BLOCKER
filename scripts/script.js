@@ -3,6 +3,7 @@ let tabUrl = "";
 let timer = 0;
 const extensionId = chrome.runtime.id;
 const bodyElem = document.getElementsByTagName("body")[0];
+const incognitoMsgElem = document.getElementById("incognitoMsg");
 const addKeywordsBtn = document.getElementById("addKeywords");
 const inputKeyWords = document.getElementById("keyWordInput");
 const activeTabIconBtn = document.getElementById("activeTabIcon");
@@ -11,6 +12,11 @@ const blackListDescDiv = document.getElementById("blackListDesc");
 const blackListContainer = document.getElementById("blackListContainer");
 
 window.addEventListener("DOMContentLoaded", () => {
+  chrome.extension.isAllowedIncognitoAccess((isAllowedAccess) => {
+    if (isAllowedAccess) {
+      incognitoMsgElem.remove();
+    }
+  });
   fetchBlackList();
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
     if (tab.title) {
@@ -40,7 +46,7 @@ const fetchBlackList = () => {
   chrome.storage.sync.get(["blockedWords"], (result) => {
     if (result.blockedWords) {
       currentBlackList = result.blockedWords;
-      if (currentBlackList.length === 0) {
+      if (currentBlackList.length === 0 || !currentBlackList) {
         blackListDescDiv.style.display = "none";
         blackListContainer.innerHTML = `<span class="w-100 text-center">You are free to browse 🤓</span>`;
       } else {
@@ -76,6 +82,9 @@ const fetchBlackList = () => {
           index++;
         });
       }
+    } else {
+      blackListDescDiv.style.display = "none";
+      blackListContainer.innerHTML = `<span class="w-100 text-center">You are free to browse 🤓</span>`;
     }
     setScrollEffect(blackListContainer);
   });
