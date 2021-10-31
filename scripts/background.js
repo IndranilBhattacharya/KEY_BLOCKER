@@ -7,6 +7,13 @@ chrome.tabs.onUpdated.addListener((activeTabId, activeInfo) => {
   }
 });
 
+chrome.runtime.setUninstallURL(
+  "https://docs.google.com/forms/d/e/1FAIpQLSdR1FwGwYqUt1qeA6mdTcIZVbhh8PgCt1sKUEwJbBZzI7KgGw/viewform?usp=pp_url",
+  () => {
+    return;
+  }
+);
+
 const processKeys = (urlString, id) => {
   if (!urlString.endsWith("key-blocked.html")) {
     chrome.storage.sync.get(["blockedWords"], (result) => {
