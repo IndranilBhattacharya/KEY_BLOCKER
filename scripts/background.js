@@ -12,7 +12,9 @@ const processKeys = (urlString, id) => {
     chrome.storage.sync.get(["blockedWords"], (result) => {
       if (result.blockedWords) {
         const blackListKeys = result.blockedWords;
-        const filteredKeys = blackListKeys.filter((k) => urlString.includes(k));
+        const filteredKeys = blackListKeys.filter((k) =>
+          urlString.toLowerCase().includes(k?.toLowerCase())
+        );
         if (filteredKeys.length > 0) {
           const sinceTime = new Date().getTime() - 100;
           removeBlockedRecord(sinceTime);
