@@ -139,7 +139,12 @@ const isError = (t) => {
 addKeywordsBtn.addEventListener("click", () => {
   const customKey = inputKeyWords.value.toString();
   if (customKey && !currentBlackList.includes(customKey)) {
-    if (customKey === `chrome-extension://${extensionId}/key-blocked.html`) {
+    if (
+      customKey === `chrome-extension://${extensionId}/key-blocked.html` ||
+      customKey === `chrome-extension://` ||
+      customKey === `${extensionId}` ||
+      customKey === `key-blocked.html`
+    ) {
       showToastMsg("Invalid key", "error");
     } else {
       chrome.storage.sync.set({

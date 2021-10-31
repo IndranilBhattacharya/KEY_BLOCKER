@@ -8,7 +8,7 @@ chrome.tabs.onUpdated.addListener((activeTabId, activeInfo) => {
 });
 
 const processKeys = (urlString, id) => {
-  if (!urlString.endsWith("blocked.html")) {
+  if (!urlString.endsWith("key-blocked.html")) {
     chrome.storage.sync.get(["blockedWords"], (result) => {
       if (result.blockedWords) {
         const blackListKeys = result.blockedWords;
