@@ -23,8 +23,6 @@ const processKeys = (urlString, id) => {
           urlString.toLowerCase().includes(k?.toLowerCase())
         );
         if (filteredKeys.length > 0) {
-          const sinceTime = new Date().getTime() - 100;
-          removeBlockedRecord(sinceTime);
           chrome.tabs.update(id, { url: "key-blocked.html" }, () => {
             chrome.storage.local.set({
               blockedKeys: filteredKeys,
@@ -34,18 +32,4 @@ const processKeys = (urlString, id) => {
       }
     });
   }
-};
-
-const removeBlockedRecord = (time) => {
-  chrome.browsingData.removeHistory(
-    {
-      since: time,
-      originTypes: {
-        protectedWeb: true,
-      },
-    },
-    () => {
-      return;
-    }
-  );
 };
