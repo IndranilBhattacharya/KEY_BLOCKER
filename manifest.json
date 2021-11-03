@@ -17,7 +17,7 @@
     "256": "./assets/logo/logo256.png",
     "512": "./assets/logo/logo512.png"
   },
-  "permissions": ["activeTab", "storage", "tabs", "unlimitedStorage"],
+  "permissions": ["storage", "tabs", "unlimitedStorage"],
   "background": {
     "scripts": ["./scripts/background.js"]
   },
