@@ -3,58 +3,46 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Blocks access to websites (as per keywords user specifies) to improve productivity."
-    />
+    <meta name="description" content="Blocks access to websites (as per keywords user specifies) to improve productivity." />
+    <!-- Single Consolidated Stylesheet -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/button-style.css" />
-    <link rel="stylesheet" href="./styles/animation.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <title>KEY BLOCKER</title>
   </head>
   <body>
-    <div class="w-100 d-flex align-items-center tool-bar">
-      <div class="icon-container h-100">
-        <img
-          alt=""
-          height="24px"
-          width="24px"
-          src="./assets/logo/logo24.png"
-        /><span class="extension-name"><strong>KEY BLOCKER</strong></span>
+    <!-- Ambient glowing orbs -->
+    <div class="ambient-background">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+    </div>
+    
+    <div class="tool-bar">
+      <div class="icon-container">
+        <img alt="logo" height="24px" width="24px" src="./assets/logo/logo24.png" />
+        <span class="extension-name"><strong>KEY BLOCKER</strong></span>
       </div>
-      <div style="flex: 1 auto"></div>
-      <button class="tab-icon-container" type="button" id="activeTabIcon">
-        <img alt="" height="32px" width="32px" id="tabIcon" />
+      <button class="tab-icon-container" type="button" id="activeTabIcon" title="Block this site">
+        <img alt="tab" height="20px" width="20px" id="tabIcon" />
       </button>
     </div>
+    
     <div id="incognitoMsg" class="incognito-wran-msg">
-      <span class="material-icons">message</span>Please enable Incognito access
-      for overall monitoring
+      <span class="material-icons">security</span><span>Please enable Incognito access for overall monitoring</span>
     </div>
-    <div class="form-container d-flex align-items-center">
-      <input
-        type="text"
-        class="form-control form-control-sm"
-        id="keyWordInput"
-        placeholder="Type a keyword to block ..."
-      />
-      <button
-        type="button"
-        class="bttn fancy-button bg-gradient"
-        id="addKeywords"
-        title="Add to blacklist"
-      >
-        <span class="material-icons text-light"> add </span>
+    
+    <div class="form-container">
+      <input type="text" class="form-control" id="keyWordInput" placeholder="Type a keyword to block..." />
+      <button type="button" class="bttn" id="addKeywords" title="Add to blacklist">
+        <span class="material-icons"> add </span>
       </button>
     </div>
-    <div id="blackListDesc" class="w-100 list-desc-at-blocked">
-      You have following keyword(s) in blacklist
+    
+    <div id="blackListDesc" class="list-desc-at-blocked">
+      Active Blocked Keywords
     </div>
-    <div id="blackListContainer" class="d-flex container-for-words"></div>
+    
+    <div id="blackListContainer" class="container-for-words"></div>
+    
     <script src="./scripts/script.js"></script>
   </body>
 </html>
