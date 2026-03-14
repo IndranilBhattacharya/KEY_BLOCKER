@@ -13,6 +13,19 @@ window.addEventListener("DOMContentLoaded", () => {
         badge.appendChild(keySpan);
         keywordContainer.appendChild(badge);
       });
+      
+      const closeBtn = document.getElementById("closeTabBtn");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            if (tabs.length > 0) {
+              chrome.tabs.remove(tabs[0].id);
+            } else {
+              window.close();
+            }
+          });
+        });
+      }
     });
   });
 });

@@ -23,7 +23,8 @@ const processKeys = (urlString, id) => {
           urlString.toLowerCase().includes(k?.toLowerCase())
         );
         if (filteredKeys.length > 0) {
-          chrome.tabs.update(id, { url: "key-blocked.html" }, () => {
+          const blockedUrl = chrome.runtime.getURL("key-blocked.html");
+          chrome.tabs.update(id, { url: blockedUrl }, () => {
             chrome.storage.local.set({
               blockedKeys: filteredKeys,
             });
